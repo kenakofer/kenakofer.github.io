@@ -1,37 +1,10 @@
-## Welcome to GitHub Pages
+## Kenan Schaefkofer
 
-You can use the [editor on GitHub](https://github.com/kenakofer/kenakofer.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+[pronunciation](TODO pronunciation)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Kenan Schaefkofer (kenakofer) is a software engineer with passions for games, music, math, and improving discourse. This page highlights personal, open-source projects built by Kenan over the years, most of which can still be enjoyed today. You can find his professional experience and [resume](TODO) over on this [other page](TODO).
 
-### Markdown
+### Personal Projects
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/kenakofer/kenakofer.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+2014: Scholar's Bowl (Quiz Bowl) Buzzer Hub setup with timing, lockout, and advanced scorekeeping. This project gave Kenan experience with Python + Tkinter + Raspberry pi + 3d printed hand-held buzzer assemblies. Though the code and interface isn't pretty with hindsight, it was great practice for learning and exhibiting a finished product. Kenan's high school used the system for many of its hosted tournaments. [Github](https://github.com/kenakofer/pi-bowl)
