@@ -2,3 +2,30 @@
 ---
 
 @import "{{ site.theme }}";
+
+
+.pronunciation-button {
+    cursor: pointer;
+}
+
+
+.project-card {
+    border: 1px solid black;
+}
+.card-left {
+    // width: 200px;
+    float: left;
+    border: 1px solid red;
+}
+
+.project-thumb {
+    width: 180px;
+    border: 1px solid black;
+    padding: 0;
+    margin: 0;
+}
+
+.project-title {
+    font-size: 22px;
+    font-weight: bold;
+}
