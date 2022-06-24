@@ -1,0 +1,7 @@
+{
+  "title": "PiBowl",
+  "screenshot": "pi-bowl-screenshot.png",
+  "description": "A 2014 high school project, Quiz Bowl Buzzer Hub setup with timing, lockout, and advanced scorekeeping. This project gave Kenan experience with Python + Tkinter + Raspberry pi + 3d printed hand-held buzzer assemblies. Though the code and interface isn't pretty in hindsight, it was great practice for learning, building, and using a finished product in a real-world performance setting. Kenan's high school used the system for its hosted tournaments.",
+  "github-link": "https://github.com/kenakofer/pi-bowl",
+  "github-text": "Download"
+}

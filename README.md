@@ -11,14 +11,17 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()">pronunciation
 
 ### Personal Projects
 
+{% for project_hash in site.data.projects %}
+{% assign project = project_hash[1] %}
 <div class="project-card">
 <div class="card-left">
-<img class="project-thumb" src="{{ site.baseurl }}/assets/img/pi-bowl-screenshot.png">
+<img class="project-thumb" src="{{ site.baseurl }}/assets/img/{{ project.screenshot }}">
 </div>
 <div class="card-right">
-<span class="project-title">PiBowl</span>
+<span class="project-title">{{ project.title }}</span>
 <p>
-A 2014 high school project, Quiz Bowl Buzzer Hub setup with timing, lockout, and advanced scorekeeping. This project gave Kenan experience with Python + Tkinter + Raspberry pi + 3d printed hand-held buzzer assemblies. Though the code and interface isn't pretty in hindsight, it was great practice for learning, building, and using a finished product in a real-world performance setting. Kenan's high school used the system for its hosted tournaments. <a href="https://github.com/kenakofer/pi-bowl">Download</a>
+{{ project.description }} <a href="{{ project.github-link }}">{{ project.github-text }}</a>
 </p>
 </div>
-<div class="project-card">
+</div>
+{% endfor %}
