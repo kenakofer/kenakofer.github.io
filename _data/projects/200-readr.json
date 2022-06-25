@@ -1,5 +1,6 @@
 {
   "title": "ReadR",
+  "date": 2013,
   "screenshot": "readr-screenshot.png",
   "description": "Command line treadmill-style speed reader, with a focus on comprehension, written in Python with ncurses. Just a fun little project for the heck of it, with some over-the-top bells and whistles to please all the CLI enthusiasts out there.",
   "github-link": "https://github.com/kenakofer/ReadR",
