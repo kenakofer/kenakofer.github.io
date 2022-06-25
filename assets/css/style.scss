@@ -14,19 +14,23 @@
     display: inline-block;
 }
 .card-left {
+    display: flex;
+    justify-content: center;
     width: 150px;
     height: 150px;
     float: left;
     border: 2px solid red;
+    overflow: hidden;
 }
 
 img.project-thumb {
+    flex: none;
+    display: block;
     object-fit: cover;
     height: 100%;
     width: auto;
     border: 0px solid black;
-    padding: 0;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .project-title {
