@@ -21,16 +21,29 @@
     float: left;
     border: 2px solid red;
     overflow: hidden;
+    position: relative; // Position its absolute children relative to it
 }
 
 img.project-thumb {
     flex: none;
-    display: block;
     object-fit: cover;
     height: 100%;
     width: auto;
     border: 0px solid black;
     margin: 0 auto;
+    position: absolute;
+    z-index: 0;
+    padding: 0;
+}
+.project-vid {
+    padding: 0;
+    object-fit: cover;
+    height: 100%;
+    width: auto;
+    border: 0px solid black;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 1;
 }
 
 .project-title {
