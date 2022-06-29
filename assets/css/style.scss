@@ -11,17 +11,24 @@
 
 .project-card {
     border: 2px solid black;
+    background: #ddd;
     display: inline-block;
+    margin-bottom: 15px;
 }
+.project-card:hover {
+    background: #c7cbd7;
+}
+
 .card-left {
     display: flex;
     justify-content: center;
     width: 150px;
     height: 150px;
     float: left;
-    border: 2px solid red;
+    border: 2px solid black;
     overflow: hidden;
     position: relative; // Position its absolute children relative to it
+    margin: 10px;
 }
 
 img.project-thumb {
@@ -49,4 +56,6 @@ img.project-thumb {
 .project-title {
     font-size: 22px;
     font-weight: bold;
+    margin-top: 3px;
+    display: block;
 }
