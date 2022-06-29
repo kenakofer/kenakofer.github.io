@@ -1,5 +1,5 @@
 
-Kenan Schaefkofer <a class="pronunciation-button" onclick="play()">pronunciation</a> is a software engineer with passions for games, music, math, and improving discourse. This page highlights personal, open-source projects built by Kenan over the years, most of which can still be enjoyed today. You can find his professional experience and [resume](TODO) over on this [other page](TODO).
+Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ site.baseurl }}/assets/icons/speaker.png"></a> is a software engineer with passions for games, music, math, and improving discourse. This page highlights personal, open-source projects built by Kenan over the years, most of which can still be enjoyed today. You can find his professional experience and [resume](TODO) over on this [other page](TODO).
 
 <script>
     function play() {

@@ -7,16 +7,21 @@
 .pronunciation-button {
     cursor: pointer;
 }
-
+.pronunciation-button img {
+    margin-top: -12px;
+    margin-left: 0px;
+    margin-right: 4px;
+}
 
 .project-card {
-    border: 2px solid black;
+    border: 2px solid #333;
     background: #ddd;
     display: inline-block;
     margin-bottom: 15px;
 }
 .project-card:hover {
     background: #c7cbd7;
+    color:  #222;
 }
 
 .card-left {
