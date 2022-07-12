@@ -13,7 +13,8 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
 
 ### Personal Projects
 
-{% for project_hash in site.data.projects %}
+{% assign sorted = site.data.projects | sort %}
+{% for project_hash in sorted %}
 {% assign project = project_hash[1] %}
 {% unless project.id == "hide" %}
 <div class="project-card" data-id="{{ project.id }}">
