@@ -1,0 +1,10 @@
+{
+  "id": "freeplay",
+  "title": "Freeplay",
+  "date": 2018,
+  "screenshot": "freeplay-settlers-small.jpg",
+  "mp4": "",
+  "description": "An in-browser card table for playing arbitrary tabletop games with friends, made with a Flask backend and jQuery/Socket.io frontend. No rules are enforced or automated, but decks, dice, and private hands allow players to play as they would in real life. Developed before Kenan realized Tabletop Simulator was a thing.",
+  "github-link": "https://github.com/kenakofer/games.gc.my/blob/master/app/static/js/freeplay.js",
+  "github-text": "Download"
+}
