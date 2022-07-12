@@ -1,0 +1,10 @@
+{
+  "id": "oven-mit",
+  "title": "OvenMit",
+  "date": 2021,
+  "screenshot": "oven-mit-lmms-screenshot.jpg",
+  "mp4": "oven-mit-loop-lmms.mp4",
+  "description": "Lightweight realtime LV2 additive chiptune synthesizer with Unity Audio Plugin integration. This plugin was built in C and C++ to provide low-latency audio for MIDI events in a Unity project integrating music and gameplay. Designed from the ground up with an MIT license to permit commercial use. Pictured here as used in LMMS.",
+  "github-link": "https://github.com/kenakofer/oven-mit-synth",
+  "github-text": "Download"
+}
