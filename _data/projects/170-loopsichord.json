@@ -4,7 +4,7 @@
   "date": 2017,
   "screenshot": "loopsichord.png",
   "mp4": "loopsichord-clip.mp4",
-  "description": "Loopsichord is a digital instrument for mouse and keyboard, featuring looping, colors and visualizations. It takes the layout of a traditional keyboard into the second dimension by stacking diatonic scales, with related keys adjacent. A great way to play and discover that the key of C is no more fundamental than its peers.",
+  "description": "Loopsichord is a digital instrument for mouse and keyboard, featuring looping, colors and visualizations. It takes the layout of a piano into the second dimension by stacking diatonic scales, with related keys adjacent. A great way to play and discover that the key of C is no more fundamental than its peers.",
   "github-link": "https://github.com/kenakofer/loopsichord",
   "github-text": "Download"
 }
