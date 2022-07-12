@@ -3,6 +3,31 @@
 
 @import "{{ site.theme }}";
 
+.socials {
+    position: absolute;
+    left: 196px;
+    bottom: 45px;
+}
+
+.socials svg {
+    width: 40px;
+    height: 40px;
+    fill: #000;
+    margin-right: 15px;
+}
+
+.socials a:hover svg {
+    fill: #555;
+}
+
+// #header_wrap {
+//     background: linear-gradient(to top, #444, #222);
+// }
+
+.socials a {
+    text-decoration: none;
+}
+
 
 .pronunciation-button {
     cursor: pointer;
