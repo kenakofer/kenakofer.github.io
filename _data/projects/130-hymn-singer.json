@@ -1,0 +1,10 @@
+{
+  "id": "hymn-singer",
+  "title": "Hymn Singer",
+  "date": 2020,
+  "screenshot": "hymn-singer-tis-gift.jpg",
+  "mp4": "hymn-singer-loop.mp4",
+  "description": "Provides full sheet music and in-browser accompaniment for hundreds of carefully typeset songs. Individual part volumes can be adjusted to learn by ear. Every page provides viewing and downloading of PDFs, PNGs, lyrics, MIDI, MP3, and even a slideshow! This ambitious project combines Lilypond, Jekyll and frontend UX.",
+  "github-link": "https://hymnsinger.com",
+  "github-text": "Check it out"
+}
