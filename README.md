@@ -13,6 +13,7 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
 
 {% for project_hash in site.data.projects %}
 {% assign project = project_hash[1] %}
+{% unless project.id == "hide" %}
 <div class="project-card" data-id="{{ project.id }}">
 <div class="card-left">
 <img class="project-thumb" src="{{ site.baseurl }}/assets/img/{{ project.screenshot }}">
@@ -27,6 +28,7 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
 </p>
 </div>
 </div>
+{% endunless %}
 {% endfor %}
 
 <script>
