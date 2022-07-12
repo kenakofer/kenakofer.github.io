@@ -18,18 +18,17 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
 {% assign project = project_hash[1] %}
 {% unless project.id == "hide" %}
 <div class="project-card" data-id="{{ project.id }}">
-<div class="card-left">
-<img class="project-thumb" src="{{ site.baseurl }}/assets/img/{{ project.screenshot }}">
-<video class="project-vid" data-id="{{ project.id }}" loop muted playsinline>
-    <source src="{{ site.baseurl }}/assets/mp4/{{ project.mp4 }}">
-</video>
-</div>
-<div class="card-right">
-<span class="project-title">{{ project.title }}</span>
-<p>
-{{ project.description }} <a href="{{ project.github-link }}">{{ project.github-text }}</a>
-</p>
-</div>
+    <div class="card-year">{{ project.date }}</div>
+    <div class="card-left">
+        <img class="project-thumb" src="{{ site.baseurl }}/assets/img/{{ project.screenshot }}">
+        <video class="project-vid" data-id="{{ project.id }}" loop muted playsinline>
+            <source src="{{ site.baseurl }}/assets/mp4/{{ project.mp4 }}">
+        </video>
+    </div>
+    <div class="card-right">
+        <span class="project-title">{{ project.title }}</span>
+        <p>{{ project.description }} <a href="{{ project.github-link }}">{{ project.github-text }}</a></p>
+    </div>
 </div>
 {% endunless %}
 {% endfor %}
