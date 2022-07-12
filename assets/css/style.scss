@@ -43,6 +43,7 @@
     background: #ddd;
     display: inline-block;
     margin-bottom: 15px;
+    position: relative;
 }
 .project-card:hover {
     background: #c7cbd7;
@@ -51,13 +52,21 @@
 
 .card-year {
     position: absolute;
-    left: -26px;
+    left: -38px;
+    top: 0px;
     writing-mode: sideways-lr;
     font-size: 30px;
     color: #b3b3b3;
+    transition: 0.4s;
 }
 
-@media only screen and (max-width: 700px) {
+.project-card:hover .card-year {
+    left: -45px;
+    top: 2px;
+    color: #a3a3a3;
+}
+
+@media only screen and (max-width: 710px) {
     .card-year {
         display: none
     }
