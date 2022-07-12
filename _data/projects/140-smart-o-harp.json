@@ -1,0 +1,10 @@
+{
+  "id": "smart-o-harp",
+  "title": "Smart-o-Harp",
+  "date": 2019,
+  "screenshot": "smart-o-harp-small.jpg",
+  "mp4": "",
+  "description": "An Arduino-controlled autoharp chord mechanism unlocks thousands of chords, while other autoharps max out at 21. The Arduino reads presses from a keypad, and maps them to a chord like B♭ or D♯m(add2). Two 8-bit shift registers control 36 solenoids in order to dampen the unwanted strings.",
+  "github-link": "https://github.com/kenakofer/smart-o-harp",
+  "github-text": "Download"
+}
