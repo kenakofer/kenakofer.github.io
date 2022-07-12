@@ -56,17 +56,33 @@
 
 .card-year {
     position: absolute;
-    left: -38px;
-    top: 0px;
-    writing-mode: sideways-lr;
+    left: -45px;
+    top: 7px;
+    // writing-mode: sideways-lr;
     font-size: 30px;
     color: #b3b3b3;
+    transform: rotate(-90deg);
+
+    /* Legacy Safari */
+    -webkit-transform: rotate(-90deg);
+
+    /* Legacy Firefox */
+    -moz-transform: rotate(-90deg);
+
+    /* Legacy IE */
+    -ms-transform: rotate(-90deg);
+
+    /* Legacy Opera */
+    -o-transform: rotate(-90deg);
+
+    /* Legacy Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
     transition: 0.4s;
 }
 
 .project-card:hover .card-year {
-    left: -45px;
-    top: 2px;
+    left: -52px;
+    top: 9px;
     color: #a3a3a3;
 }
 
