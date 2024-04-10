@@ -1,0 +1,10 @@
+{
+    "id": "brontobot",
+    "title": "Brontobot",
+    "date": 2024,
+    "screenshot": "brontobot.png",
+    "mp4": "",
+    "description": "A not-just-arbitrage trading bot that monitors multiple prediction market and forecasting platforms and executes trades based on the best available discrepancies, taking into account the fees, liquidity, and accuracy of each platform and contract.",
+    "github-link": "https://manifold.markets/brontobot",
+    "github-text": "Manifold Profile"
+}

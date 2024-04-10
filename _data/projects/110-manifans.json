@@ -1,0 +1,10 @@
+{
+    "id": "manifans",
+    "title": "ManiFans",
+    "date": 2023,
+    "screenshot": "manifans.png",
+    "mp4": "",
+    "description": "Browser extension to add a badge to manifold.markets users who hold the top positions on permanent markets (AKA \"stonk markets\"). The badge could indicate they are \"Aba's #1 Fan\", or \"AI Singularity's #3 Critic\" if they hold a large position either long or short.",
+    "github-link": "https://github.com/kenakofer/manifans-extension",
+    "github-text": "Download"
+}
