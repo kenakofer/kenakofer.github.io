@@ -1,6 +1,6 @@
 
 Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ site.baseurl }}/assets/icons/speaker.png"></a> is a software engineer with passions for games, music, math, and open-source software. This page highlights several personal projects built by Kenan over the years, most of which can still be enjoyed today. You can find his professional experience in his
-<a href="{{ site.baseurl }}/assets/pdf/Resume_public_v1.9.pdf" target="_blank">resume</a>.
+<a href="{{ site.baseurl }}/assets/pdf/Resume_v1.10.pdf" target="_blank">resume</a>.
 
 
 <script>
