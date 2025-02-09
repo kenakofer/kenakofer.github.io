@@ -13,6 +13,16 @@ Hopefully this can be a helpful visual reference for the development and feature
  
  **A**: We rely primarily on how the developers describe and market it.
  
+ **Q**: What do all these numbers mean? 
+
+ **A**: A token is about half a word. Current LLMs "see" tokens instead of letters or words. The numbers in each model indicate limitations or costs when using the model. Top to bottom: 
+
+Parameter count is how many numbers is takes to describe the model's weights. More parameters typically means the model knows more stuff, but it's harder to train and harder to run. Most proprietary models don't share their parameter count anymore. 
+
+Context window is how long (in tokens) that your conversation with the llm can get before the llm forgets the first tokens. Max output tokens is how many tokens the LLM can output in a single message. 
+
+The other two numbers are cost per million tokens input and cost per million tokens output. You probably don't see these costs when you're using a web interface, but for those using the API, they pay by the mega-token. These costs usually correlate with the cost of electricity to handle your request, even if you're using a free web interface.
+
  **Q**: Image inputs and outputs typically use non-LLM models that aren't listed here, so why include them? 
  
  **A**: It takes some technical knowledge to even realize the distinction, and multimodality and proprietary secrecy will probably increase going forward. Suffice it to say these are features that users of the platform care about. Similar things can be said for the inclusion of realtime voice, document upload, Copilot, and web browsing tags."
