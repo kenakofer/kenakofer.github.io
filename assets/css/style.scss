@@ -8,9 +8,9 @@
 }
 
 /* Give the content column room for two project cards side by side.
-   Kept a touch under the 900px breakpoint's worth of viewport so the
-   +/-30px row zigzag never overflows on ~1024px screens. */
-@media only screen and (min-width: 900px) {
+   Kept under the viewport width so the +/-22px row zigzag never overflows
+   on screens near the 1000px breakpoint. */
+@media only screen and (min-width: 1000px) {
     .inner {
         max-width: 940px;
     }
@@ -103,19 +103,19 @@
     margin-bottom: 15px;
 }
 
-/* Zigzag: nudge alternate rows left/right in both layouts. */
-.project-row:nth-child(odd) {
-    transform: translateX(-30px);
-}
-.project-row:nth-child(even) {
-    transform: translateX(30px);
-}
-
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
     .project-row {
         /* Default 50/50; JS overrides per row so the wordier card gets more
            width (proportional to content), giving a ragged center seam. */
         grid-template-columns: 1fr 1fr;
+    }
+
+    /* Zigzag: nudge alternate rows left/right. Wide layout only. */
+    .project-row:nth-child(odd) {
+        transform: translateX(-22px);
+    }
+    .project-row:nth-child(even) {
+        transform: translateX(22px);
     }
 }
 

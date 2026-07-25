@@ -67,7 +67,7 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
     // In a two-card row, let the wordier card claim more horizontal space from
     // its partner. Outer edges stay grid-aligned; the center seam goes ragged.
     (function () {
-        var WIDE = window.matchMedia("(min-width: 900px)");
+        var WIDE = window.matchMedia("(min-width: 1000px)");
 
         function balanceRow(row) {
             var cards = row.querySelectorAll(".project-card");
