@@ -62,11 +62,12 @@
 }
 
 /* Pixel-art brick frame along the top and left inner edges of each card.
-   Two tiled layers form an L, each with its own tile so the faces read as
-   different orthographic planes: the top face uses horizontal courses in a
-   lighter grey, the left face uses vertical courses in a darker grey. The
-   32px tiles are drawn pixelated at native size, so they tile cleanly to
-   any card width or height. */
+   Two tiled layers form an L, each with its own tile carrying a baked-in
+   perspective shear so the faces read as receding orthographic planes: the
+   top face's bricks slant up-to-the-right (lit, lighter grey), the left
+   face's slant down-to-the-left (shaded, darker grey). The tiles are drawn
+   pixelated and scaled by an integer factor, so they stay crisp and tile
+   seamlessly across any card width or height. */
 .project-card::before {
     content: "";
     position: absolute;
@@ -76,13 +77,13 @@
     bottom: 0;
     pointer-events: none;
     z-index: 3;
-    $brick: 32px;
+    // top tile is 32x16, left tile is 16x32; shown at 2x => 32px band.
     background-image:
         url("../img/brick-top.png"),    /* top strip  (top plane)  */
         url("../img/brick-left.png");   /* left strip (side plane) */
     background-repeat: repeat-x, repeat-y;
     background-position: top left, top left;
-    background-size: auto $brick, $brick auto;
+    background-size: 64px 32px, 32px 64px;
     image-rendering: pixelated;
     -ms-interpolation-mode: nearest-neighbor;
 }
