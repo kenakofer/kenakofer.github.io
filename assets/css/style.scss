@@ -56,9 +56,14 @@
    it, so the card looks like a block extruded toward the viewer:
      - top side  recedes up-and-back  (lit, lighter grey), tiled repeat-x
      - left side recedes down-and-back (shaded, darker grey), tiled repeat-y
-   Source tiles are 16x14 (top) and 14x16 (left) with a shallow isometric lean
-   baked in; shown at 2x => 28px depth. */
+   Source tiles are a CC0 seamless red-brick texture (opengameart.org, public
+   domain), desaturated to grey and toned into a lit copy (brick-top) and a
+   shaded copy (brick-left). Each 140x140 tile tiles seamlessly in both axes;
+   CSS skews each strip 45deg into a parallelogram. */
 $brick-depth: 28px;
+$brick-tile: 28px;       /* render width of the square brick tile (finer bricks) */
+$brick-top-band: 28px;   /* the top tile's 2 courses map to the full band depth,
+                            so ~2 finer courses show on the top face */
 
 .project-card {
     border: 2px solid #333;
@@ -88,10 +93,11 @@ $brick-depth: 28px;
     height: $brick-depth;
     pointer-events: none;
     z-index: -1;                /* behind the front face */
+    /* Smaller bricks so ~2 courses fit in the depth band. The tile is two
+       courses tall (140px); rendered so its full height maps to the band,
+       seams land cleanly at course boundaries (no doubling). */
     background: url("../img/brick-top.png") repeat-x bottom left;
-    background-size: 16px $brick-depth;
-    image-rendering: pixelated;
-    -ms-interpolation-mode: nearest-neighbor;
+    background-size: $brick-tile $brick-top-band;
     transform: skewX(45deg);
     transform-origin: bottom right;
 }
@@ -109,44 +115,21 @@ $brick-depth: 28px;
     width: $brick-depth;
     pointer-events: none;
     z-index: -1;
-    background: url("../img/brick-left.png") repeat-y top right;
-    background-size: $brick-depth 16px;
-    image-rendering: pixelated;
-    -ms-interpolation-mode: nearest-neighbor;
+    background: url("../img/brick-left.png") repeat top right;
+    background-size: $brick-tile $brick-tile;
     transform: skewY(45deg);
     transform-origin: bottom right;
 }
 
+/* The rotated year labels are hidden in the brick-block version; the block's
+   left face now occupies that margin instead. */
 .card-year {
-    position: absolute;
-    left: -45px;
-    top: 7px;
-    font-size: 30px;
-    color: #b3b3b3;
-    transform: rotate(-90deg);
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transition: 0.4s;
-}
-
-.project-card:hover .card-year {
-    left: -52px;
-    top: 9px;
-    color: #a3a3a3;
-}
-
-@media only screen and (max-width: 715px) {
-    .card-year {
-        display: none;
-    }
+    display: none;
 }
 
 /* Each row holds up to two cards; rows stack vertically. */
 #projects {
-    /* Room for the rotated year labels that sit in each card's left margin. */
-    padding-left: 45px;
+    /* (No longer reserving left-margin room for year labels.) */
 }
 
 .project-row {
