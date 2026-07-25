@@ -21,9 +21,11 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
     <div class="card-year">{{ project.date }}</div>
     <div class="card-left">
         <img class="project-thumb" src="{{ site.baseurl }}/assets/img/{{ project.screenshot }}">
+        {% if project.mp4 != "" %}
         <video class="project-vid" data-id="{{ project.id }}" loop muted playsinline>
             <source src="{{ site.baseurl }}/assets/mp4/{{ project.mp4 }}">
         </video>
+        {% endif %}
     </div>
     <div class="card-right">
         <span class="project-title">{{ project.title }}</span>
@@ -40,12 +42,14 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
             data_id = event.target.getAttribute('data-id');
             if (!data_id) return;
             vid = document.querySelector('.project-vid[data-id="'+data_id+'"]');
+            if (!vid) return;
             vid.play();
         });
         card.addEventListener("mouseleave", function() {
             data_id = event.target.getAttribute('data-id');
             if (!data_id) return;
             vid = document.querySelector('.project-vid[data-id="'+data_id+'"]');
+            if (!vid) return;
             vid.pause();
         });
     });
