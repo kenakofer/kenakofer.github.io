@@ -7,10 +7,12 @@
     max-width: 645px;
 }
 
-/* Give the content column room for two project cards side by side. */
+/* Give the content column room for two project cards side by side.
+   Kept a touch under the 900px breakpoint's worth of viewport so the
+   +/-30px row zigzag never overflows on ~1024px screens. */
 @media only screen and (min-width: 900px) {
     .inner {
-        max-width: 1000px;
+        max-width: 940px;
     }
 }
 
@@ -99,6 +101,14 @@
        align-items defaults to stretch so row-mates match the taller height. */
     gap: 15px 64px;
     margin-bottom: 15px;
+}
+
+/* Zigzag: nudge alternate rows left/right in both layouts. */
+.project-row:nth-child(odd) {
+    transform: translateX(-30px);
+}
+.project-row:nth-child(even) {
+    transform: translateX(30px);
 }
 
 @media only screen and (min-width: 900px) {
