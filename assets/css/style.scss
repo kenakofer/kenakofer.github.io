@@ -94,9 +94,10 @@
 .project-row {
     display: grid;
     grid-template-columns: 1fr;
-    /* column-gap sits between the two cards; align-items defaults to stretch so
-       cards sharing a row match the taller one's height. */
-    gap: 0 64px;
+    /* row-gap spaces the two cards when they stack in the narrow single-column
+       view; column-gap sits between them side by side on wide screens.
+       align-items defaults to stretch so row-mates match the taller height. */
+    gap: 15px 64px;
     margin-bottom: 15px;
 }
 
@@ -118,6 +119,7 @@
     overflow: hidden;
     position: relative; // Position its absolute children relative to it
     margin: 10px;
+    text-decoration: none;
 }
 
 .card-right {
@@ -151,6 +153,11 @@ img.project-thumb {
     font-weight: bold;
     margin-top: 3px;
     display: block;
+    color: inherit;
+    text-decoration: none;
+}
+.project-title:hover {
+    text-decoration: underline;
 }
 
 footer.inner {
