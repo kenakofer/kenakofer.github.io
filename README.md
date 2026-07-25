@@ -84,18 +84,21 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
         });
 
         function layout() {
-            // Anchor each year evenly across the projects section (document coords),
-            // with padding so the first/last don't hug the edges.
+            // Anchor each year evenly, but packed into a compressed band so the
+            // labels sit close together and every year stays visible while the
+            // slower parallax drags the layer upward.
             var top = projects.offsetTop;
             var height = projects.offsetHeight;
-            var pad = height * 0.06;
-            var usable = height - pad * 2;
+            // Compress the labels into the middle SPREAD fraction of the section.
+            var SPREAD = 0.5;
+            var usable = height * SPREAD;
+            var start = top + (height - usable) / 2;
             var n = labels.length;
             // Fixed layer => align to the viewport-left of the content column.
             var colLeft = projects.getBoundingClientRect().left;
             labels.forEach(function (el, i) {
                 var frac = n > 1 ? i / (n - 1) : 0.5;
-                el.dataset.baseTop = Math.round(top + pad + usable * frac);
+                el.dataset.baseTop = Math.round(start + usable * frac);
                 el.style.left = Math.round(colLeft - 8) + "px";
             });
             onScroll();

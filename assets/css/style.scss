@@ -69,15 +69,15 @@
     position: absolute;
     font-size: 46px;
     font-weight: bold;
-    color: #454545;
+    color: #6a6a6a;
     letter-spacing: 1px;
     /* rotate, then pull left into the margin (origin is top-left) */
     transform: translateX(-100%) rotate(-90deg);
     transform-origin: left top;
     -webkit-transform: translateX(-100%) rotate(-90deg);
     -moz-transform: translateX(-100%) rotate(-90deg);
-    filter: blur(1.5px);
-    -webkit-filter: blur(1.5px);
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
     will-change: top;
     white-space: nowrap;
 }
