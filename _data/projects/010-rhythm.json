@@ -1,0 +1,10 @@
+{
+  "id": "rhythm",
+  "title": "Rhythm",
+  "date": 2026,
+  "screenshot": "rhythm.png",
+  "mp4": "",
+  "description": "A browser tool for typing, practicing, and sharing rhythmic exercises. Write ABC notation and it renders as sheet music you can play back, following a bouncing ball that hops from lyric syllable to syllable, karaoke style. Includes a metronome, tempo control, and shareable links that pack the whole exercise into the URL.",
+  "github-link": "https://kenan.schaefkofer.com/rhythm/",
+  "github-text": "Try it out"
+}
