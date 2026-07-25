@@ -51,41 +51,70 @@
     margin-right: 4px;
 }
 
+/* The card is the clean front face of a 3D block. Its top and left SIDES are
+   drawn as pixel-art brick strips that sit OUTSIDE the card edges and BEHIND
+   it, so the card looks like a block extruded toward the viewer:
+     - top side  recedes up-and-back  (lit, lighter grey), tiled repeat-x
+     - left side recedes down-and-back (shaded, darker grey), tiled repeat-y
+   Source tiles are 16x14 (top) and 14x16 (left) with a shallow isometric lean
+   baked in; shown at 2x => 28px depth. */
+$brick-depth: 28px;
+
 .project-card {
     border: 2px solid #333;
     background: #ddd;
     position: relative;
+    /* Leave room on the top and left for the block sides that peek out. */
+    margin-top: $brick-depth;
+    margin-left: $brick-depth;
+    z-index: 1; /* front face sits above its sides */
 }
 .project-card:hover {
     background: #c7cbd7;
     color:  #222;
 }
 
-/* Pixel-art brick frame along the top and left inner edges of each card.
-   Two tiled layers form an L, each with its own tile carrying a baked-in
-   perspective shear so the faces read as receding orthographic planes: the
-   top face's bricks slant up-to-the-right (lit, lighter grey), the left
-   face's slant down-to-the-left (shaded, darker grey). The tiles are drawn
-   pixelated and scaled by an integer factor, so they stay crisp and tile
-   seamlessly across any card width or height. */
+/* Top side of the block: a brick strip above the card. The tile carries plain
+   straight bricks; a 45deg skewX turns the whole strip into a parallelogram so
+   the outer edge and ends slant up-and-to-the-left (right at bottom, left at
+   top), reading as the receding top face of the block. transform-origin at the
+   bottom keeps the near edge glued to the card's top border. */
 .project-card::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    left: -2px;                 /* align with the card's left border */
+    right: -2px;
+    top: -$brick-depth;
+    height: $brick-depth;
     pointer-events: none;
-    z-index: 3;
-    // top tile is 32x16, left tile is 16x32; shown at 2x => 32px band.
-    background-image:
-        url("../img/brick-top.png"),    /* top strip  (top plane)  */
-        url("../img/brick-left.png");   /* left strip (side plane) */
-    background-repeat: repeat-x, repeat-y;
-    background-position: top left, top left;
-    background-size: 64px 32px, 32px 64px;
+    z-index: -1;                /* behind the front face */
+    background: url("../img/brick-top.png") repeat-x bottom left;
+    background-size: 16px $brick-depth;
     image-rendering: pixelated;
     -ms-interpolation-mode: nearest-neighbor;
+    transform: skewX(45deg);
+    transform-origin: bottom right;
+}
+
+/* Left side of the block: a brick strip to the left. 45deg skewY makes it a
+   parallelogram slanting down-on-the-right / up-on-the-left. transform-origin
+   at the right keeps the near edge glued to the card's left border. */
+.project-card::after {
+    content: "";
+    position: absolute;
+    top: 0;                     /* skewY lifts the far edge up by $brick-depth,
+                                   landing it level with the top face's plane */
+    bottom: -2px;
+    left: -$brick-depth;
+    width: $brick-depth;
+    pointer-events: none;
+    z-index: -1;
+    background: url("../img/brick-left.png") repeat-y top right;
+    background-size: $brick-depth 16px;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+    transform: skewY(45deg);
+    transform-origin: bottom right;
 }
 
 .card-year {
