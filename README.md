@@ -14,10 +14,16 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
 ### Personal Projects
 
 {% assign sorted = site.data.projects | sort %}
-<div id="projects">
+{% comment %} Only visible projects, so rows pair up correctly. {% endcomment %}
+{% assign visible = "" | split: "" %}
 {% for project_hash in sorted %}
 {% assign project = project_hash[1] %}
-{% unless project.id == "hide" %}
+{% unless project.id == "hide" %}{% assign visible = visible | push: project %}{% endunless %}
+{% endfor %}
+<div id="projects">
+{% for project in visible %}
+{% assign col = forloop.index0 | modulo: 2 %}
+{% if col == 0 %}<div class="project-row">{% endif %}
 <div class="project-card" data-id="{{ project.id }}">
     <div class="card-year">{{ project.date }}</div>
     <div class="card-left">
@@ -33,7 +39,7 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
         <p>{{ project.description }} <a href="{{ project.github-link }}">{{ project.github-text }}</a></p>
     </div>
 </div>
-{% endunless %}
+{% if col == 1 or forloop.last %}</div>{% endif %}
 {% endfor %}
 </div>
 
@@ -55,4 +61,46 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
             vid.pause();
         });
     });
+</script>
+
+<script>
+    // In a two-card row, let the wordier card claim more horizontal space from
+    // its partner. Outer edges stay grid-aligned; the center seam goes ragged.
+    (function () {
+        var WIDE = window.matchMedia("(min-width: 900px)");
+
+        function balanceRow(row) {
+            var cards = row.querySelectorAll(".project-card");
+            if (cards.length !== 2) return;            // lone last card: leave as-is
+            // Measure each card's content demand at an equal 50/50 split.
+            row.style.gridTemplateColumns = "1fr 1fr";
+            var a = cards[0].querySelector(".card-right");
+            var b = cards[1].querySelector(".card-right");
+            // scrollHeight of the text column ~ how much room the words want.
+            var da = a ? a.scrollHeight : cards[0].scrollHeight;
+            var db = b ? b.scrollHeight : cards[1].scrollHeight;
+            if (!da || !db) return;
+            // Fully proportional split, clamped so neither card collapses.
+            var fa = da / (da + db);
+            fa = Math.max(0.3, Math.min(0.7, fa));
+            row.style.gridTemplateColumns = fa.toFixed(4) + "fr " + (1 - fa).toFixed(4) + "fr";
+        }
+
+        function balanceAll() {
+            var rows = document.querySelectorAll(".project-row");
+            rows.forEach(function (row) {
+                if (WIDE.matches) {
+                    balanceRow(row);
+                } else {
+                    row.style.gridTemplateColumns = "";   // single column when narrow
+                }
+            });
+        }
+
+        window.addEventListener("resize", balanceAll);
+        window.addEventListener("load", balanceAll);       // after images settle layout
+        (WIDE.addEventListener ? WIDE.addEventListener("change", balanceAll)
+                              : WIDE.addListener(balanceAll));
+        balanceAll();
+    })();
 </script>

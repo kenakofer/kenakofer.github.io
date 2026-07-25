@@ -85,20 +85,25 @@
     }
 }
 
-/* Two cards per row on wide screens; single column when narrow. */
+/* Each row holds up to two cards; rows stack vertically. */
 #projects {
-    display: grid;
-    grid-template-columns: 1fr;
-    /* row-gap replaces the old per-card margin-bottom; column-gap sits between
-       the two columns. align-items defaults to stretch so cards sharing a row
-       match the taller one's height. */
-    gap: 15px 64px;
     /* Room for the rotated year labels that sit in each card's left margin. */
     padding-left: 45px;
 }
 
+.project-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* column-gap sits between the two cards; align-items defaults to stretch so
+       cards sharing a row match the taller one's height. */
+    gap: 0 64px;
+    margin-bottom: 15px;
+}
+
 @media only screen and (min-width: 900px) {
-    #projects {
+    .project-row {
+        /* Default 50/50; JS overrides per row so the wordier card gets more
+           width (proportional to content), giving a ragged center seam. */
         grid-template-columns: 1fr 1fr;
     }
 }
