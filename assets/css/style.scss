@@ -61,6 +61,30 @@
     color:  #222;
 }
 
+/* Pixel-art brick frame along the top and left inner edges of each card.
+   Two tiled background layers form an L: one repeats across the top, the
+   other down the left. The 16px brick tile is drawn at native size and
+   kept crisp with pixelated rendering, so it adapts to any card size. */
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 3;
+    $brick: 16px;
+    background-image:
+        url("../img/brick-edge.png"),   /* top strip  */
+        url("../img/brick-edge.png");   /* left strip */
+    background-repeat: repeat-x, repeat-y;
+    background-position: top left, top left;
+    background-size: auto $brick, $brick auto;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
 .card-year {
     position: absolute;
     left: -45px;
