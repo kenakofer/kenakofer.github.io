@@ -1,0 +1,10 @@
+{
+  "id": "hanabi",
+  "title": "Hanabi Hand Tracker",
+  "date": 2026,
+  "screenshot": "hanabi.png",
+  "mp4": "",
+  "description": "A frontend-only helper for tracking what you know about your own hand in an in-person game of Hanabi, following H-group conventions. It applies the positive and negative information from each clue across your hand, lets you cross off possibilities and mark cards as critical, chop-moved, or finessed, and includes a conventions cheat sheet. A Svelte fork of jparkhouse/hanabi-tracker.",
+  "github-link": "https://kenan.schaefkofer.com/hanabi/",
+  "github-text": "Try it out"
+}
