@@ -1,0 +1,10 @@
+{
+  "id": "binary-font",
+  "title": "Binary Font",
+  "date": 2024,
+  "screenshot": "binary-font.png",
+  "mp4": "",
+  "description": "A smart OpenType font that makes binary and hexadecimal numbers visually obvious. Digits get bit-transparent glyphs, so a hex value and its binary expansion read at a glance and even line up when you count. Built by designing glyphs in Inkscape and wiring up substitution rules in FontForge and feature files.",
+  "github-link": "https://kenan.schaefkofer.com/binary-font/",
+  "github-text": "Try it out"
+}

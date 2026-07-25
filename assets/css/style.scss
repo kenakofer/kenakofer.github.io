@@ -7,6 +7,15 @@
     max-width: 645px;
 }
 
+/* Give the content column room for two project cards side by side.
+   Kept under the viewport width so the +/-22px row zigzag never overflows
+   on screens near the 1000px breakpoint. */
+@media only screen and (min-width: 1000px) {
+    .inner {
+        max-width: 940px;
+    }
+}
+
 // #header_wrap {
 //     background: linear-gradient(to top, #444, #222);
 // }
@@ -42,53 +51,110 @@
     margin-right: 4px;
 }
 
+/* The card is the clean front face of a 3D block. Its top and left SIDES are
+   drawn as pixel-art brick strips that sit OUTSIDE the card edges and BEHIND
+   it, so the card looks like a block extruded toward the viewer:
+     - top side  recedes up-and-back  (lit, lighter grey), tiled repeat-x
+     - left side recedes down-and-back (shaded, darker grey), tiled repeat-y
+   Source tiles are a CC0 seamless red-brick texture (opengameart.org, public
+   domain), desaturated to grey and toned into a lit copy (brick-top) and a
+   shaded copy (brick-left). Each 140x140 tile tiles seamlessly in both axes;
+   CSS skews each strip 45deg into a parallelogram. */
+$brick-depth: 28px;
+$brick-tile: 28px;       /* render width of the square brick tile (finer bricks) */
+$brick-top-band: 28px;   /* the top tile's 2 courses map to the full band depth,
+                            so ~2 finer courses show on the top face */
+
 .project-card {
     border: 2px solid #333;
     background: #ddd;
-    display: inline-block;
-    margin-bottom: 15px;
     position: relative;
+    /* Leave room on the top and left for the block sides that peek out. */
+    margin-top: $brick-depth;
+    margin-left: $brick-depth;
+    z-index: 1; /* front face sits above its sides */
 }
 .project-card:hover {
     background: #c7cbd7;
     color:  #222;
 }
 
-.card-year {
+/* Top side of the block: a brick strip above the card. The tile carries plain
+   straight bricks; a 45deg skewX turns the whole strip into a parallelogram so
+   the outer edge and ends slant up-and-to-the-left (right at bottom, left at
+   top), reading as the receding top face of the block. transform-origin at the
+   bottom keeps the near edge glued to the card's top border. */
+.project-card::before {
+    content: "";
     position: absolute;
-    left: -45px;
-    top: 7px;
-    // writing-mode: sideways-lr;
-    font-size: 30px;
-    color: #b3b3b3;
-    transform: rotate(-90deg);
-
-    /* Legacy Safari */
-    -webkit-transform: rotate(-90deg);
-
-    /* Legacy Firefox */
-    -moz-transform: rotate(-90deg);
-
-    /* Legacy IE */
-    -ms-transform: rotate(-90deg);
-
-    /* Legacy Opera */
-    -o-transform: rotate(-90deg);
-
-    /* Legacy Internet Explorer */
-    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-    transition: 0.4s;
+    left: -2px;                 /* align with the card's left border */
+    right: -2px;
+    top: -$brick-depth;
+    height: $brick-depth;
+    pointer-events: none;
+    z-index: -1;                /* behind the front face */
+    /* Smaller bricks so ~2 courses fit in the depth band. The tile is two
+       courses tall (140px); rendered so its full height maps to the band,
+       seams land cleanly at course boundaries (no doubling). */
+    background: url("../img/brick-top.png") repeat-x bottom left;
+    background-size: $brick-tile $brick-top-band;
+    transform: skewX(45deg);
+    transform-origin: bottom right;
 }
 
-.project-card:hover .card-year {
-    left: -52px;
-    top: 9px;
-    color: #a3a3a3;
+/* Left side of the block: a brick strip to the left. 45deg skewY makes it a
+   parallelogram slanting down-on-the-right / up-on-the-left. transform-origin
+   at the right keeps the near edge glued to the card's left border. */
+.project-card::after {
+    content: "";
+    position: absolute;
+    top: 0;                     /* skewY lifts the far edge up by $brick-depth,
+                                   landing it level with the top face's plane */
+    bottom: -2px;
+    left: -$brick-depth;
+    width: $brick-depth;
+    pointer-events: none;
+    z-index: -1;
+    background: url("../img/brick-left.png") repeat top right;
+    background-size: $brick-tile $brick-tile;
+    transform: skewY(45deg);
+    transform-origin: bottom right;
 }
 
-@media only screen and (max-width: 715px) {
-    .card-year {
-        display: none
+/* The rotated year labels are hidden in the brick-block version; the block's
+   left face now occupies that margin instead. */
+.card-year {
+    display: none;
+}
+
+/* Each row holds up to two cards; rows stack vertically. */
+#projects {
+    /* (No longer reserving left-margin room for year labels.) */
+}
+
+.project-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* row-gap spaces the two cards when they stack in the narrow single-column
+       view; column-gap sits between them side by side on wide screens.
+       align-items defaults to stretch so row-mates match the taller height. */
+    gap: 15px 64px;
+    margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .project-row {
+        /* Default 50/50; JS overrides per row so the wordier card gets more
+           width (proportional to content), giving a ragged center seam. */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Zigzag: nudge alternate rows left/right. Wide layout only. */
+    .project-row:nth-child(odd) {
+        transform: translateX(-22px);
+    }
+    .project-row:nth-child(even) {
+        transform: translateX(22px);
     }
 }
 
@@ -102,6 +168,7 @@
     overflow: hidden;
     position: relative; // Position its absolute children relative to it
     margin: 10px;
+    text-decoration: none;
 }
 
 .card-right {
@@ -135,6 +202,11 @@ img.project-thumb {
     font-weight: bold;
     margin-top: 3px;
     display: block;
+    color: inherit;
+    text-decoration: none;
+}
+.project-title:hover {
+    text-decoration: underline;
 }
 
 footer.inner {

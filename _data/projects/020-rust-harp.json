@@ -1,0 +1,10 @@
+{
+  "id": "rust-harp",
+  "title": "Rust Harp",
+  "date": 2026,
+  "screenshot": "rust-harp.png",
+  "mp4": "",
+  "description": "A low-latency digital instrument for Android and Linux, inspired by the autoharp and written in Rust. Swiping across a line plays a note, and simple cardinal-direction gestures change chords. On Linux it acts as a virtual MIDI device (great with a bumpy-covered drawing tablet for haptic 'string' feedback); on both platforms it can synthesize its own square-wave output.",
+  "github-link": "https://github.com/kenakofer/rust-harp",
+  "github-text": "Source"
+}
