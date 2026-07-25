@@ -14,11 +14,12 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
 ### Personal Projects
 
 {% assign sorted = site.data.projects | sort %}
+<div id="year-parallax" aria-hidden="true"></div>
+<div id="projects">
 {% for project_hash in sorted %}
 {% assign project = project_hash[1] %}
 {% unless project.id == "hide" %}
-<div class="project-card" data-id="{{ project.id }}">
-    <div class="card-year">{{ project.date }}</div>
+<div class="project-card" data-id="{{ project.id }}" data-year="{{ project.date }}">
     <div class="card-left">
         <img class="project-thumb" src="{{ site.baseurl }}/assets/img/{{ project.screenshot }}">
         {% if project.mp4 != "" %}
@@ -34,6 +35,7 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
 </div>
 {% endunless %}
 {% endfor %}
+</div>
 
 <script>
     var cards = document.querySelectorAll(".project-card");
@@ -53,4 +55,67 @@ Kenan Schaefkofer <a class="pronunciation-button" onclick="play()"><img src="{{ 
             vid.pause();
         });
     });
+</script>
+
+<script>
+    // Evenly-spaced parallax years drifting behind the project cards.
+    (function () {
+        var layer = document.getElementById("year-parallax");
+        var projects = document.getElementById("projects");
+        if (!layer || !projects) return;
+
+        // Distinct years in card order (already sorted newest-first).
+        var years = [];
+        document.querySelectorAll(".project-card[data-year]").forEach(function (card) {
+            var y = card.getAttribute("data-year");
+            if (y && years.indexOf(y) === -1) years.push(y);
+        });
+
+        // Fraction of the page's scroll speed the year layer moves at.
+        // < 1 => years drift slower than the cards (classic parallax).
+        var SPEED = 0.6;
+
+        var labels = years.map(function (y) {
+            var el = document.createElement("span");
+            el.className = "year-mark";
+            el.textContent = y;
+            layer.appendChild(el);
+            return el;
+        });
+
+        function layout() {
+            // Anchor each year evenly across the projects section (document coords),
+            // with padding so the first/last don't hug the edges.
+            var top = projects.offsetTop;
+            var height = projects.offsetHeight;
+            var pad = height * 0.06;
+            var usable = height - pad * 2;
+            var n = labels.length;
+            // Fixed layer => align to the viewport-left of the content column.
+            var colLeft = projects.getBoundingClientRect().left;
+            labels.forEach(function (el, i) {
+                var frac = n > 1 ? i / (n - 1) : 0.5;
+                el.dataset.baseTop = Math.round(top + pad + usable * frac);
+                el.style.left = Math.round(colLeft - 8) + "px";
+            });
+            onScroll();
+        }
+
+        function onScroll() {
+            var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            // Layer is position:fixed, so `top` is the on-screen position.
+            // A card anchored at `base` is on screen at (base - scrollY); moving
+            // the year at (base - scrollY * SPEED) makes it lag behind => parallax.
+            labels.forEach(function (el) {
+                var base = parseFloat(el.dataset.baseTop) || 0;
+                el.style.top = (base - scrollY * SPEED) + "px";
+            });
+        }
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", layout);
+        // Recompute once images have loaded and shifted the layout.
+        window.addEventListener("load", layout);
+        layout();
+    })();
 </script>
