@@ -1,10 +1,10 @@
 {
-  "id": "hide",
+  "id": "onion-ninja",
   "title": "Onion Ninja",
   "date": 2019,
-  "screenshot": "",
-  "mp4": "",
-  "description": "A remake of Cold Paint in JS for browser and mobile, this chaotic survival arcade game records the inputs of high score runs, to give other players a competent opponent to compete against. If you can outlive every ghost, you gain the honor of replacing them.",
-  "github-link": "https://github.com/kenakofer/games.gc.my/blob/master/app/static/js/cold_waters.js",
-  "github-text": "Download"
+  "screenshot": "onion-ninja-screenshot.png",
+  "mp4": "onion-ninja.mp4",
+  "description": "A remake of Cold Paint in JS for browser and mobile, this chaotic survival arcade game records the inputs of every run. Your best attempt at each level replays alongside you as a ghost, so you are always racing your past self. Built with Phaser, originally one page of a Flask games site, now fully self-contained.",
+  "github-link": "https://kenan.schaefkofer.com/onion-ninja/",
+  "github-text": "Try it out"
 }
